@@ -1,10 +1,11 @@
-# netcat
+netcat
+======
 
-FIXME: description
+Clojure implementation of NetCat
 
 ## Installation
 
-Download from http://example.com/FIXME.
+Download from https://github.com/dboolbe/netcat/archive/master.zip.
 
 ## Usage
 
@@ -30,6 +31,6 @@ FIXME: listing of options this app accepts.
 
 ## License
 
-Copyright © 2013 FIXME
+Copyright © 2013 theSyndicate
 
 Distributed under the Eclipse Public License, the same as Clojure.
