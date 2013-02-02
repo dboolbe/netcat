@@ -1,0 +1,41 @@
+(ns netcat.core
+   (:import (java.io InputStream OutputStream PrintStream)
+            (java.net ServerSocket Socket))
+   (:use [netcat.streamtransferer])
+   (:gen-class))
+
+(defn transfer-streams
+   [socket & {:keys [inbound-stream]
+              :or {inbound-stream true}}]
+   (if inbound-stream
+      (let [input (.getInputStream socket)
+            output (System/out)]
+         (stream-receiver input output))
+      (let [input (System/in)
+            output (.getOutputStream socket)]
+         (stream-transmiter input output))))
+
+(defn connect
+   "Start communication to host 'host' and port 'port'."
+   [host port]
+   (let [socket (new Socket host port)]
+      (println (str "Connecting to " host " port " port))
+      (transfer-streams socket :inbound-stream false)))
+
+(defn listen
+   "Listen to communication on port 'port'."
+   [port]
+   (let [server (new ServerSocket port)]
+      (try (println (str "Listening at port " port))
+           (let [socket (.accept server)]
+              (println "Accepted")
+              (transfer-streams socket :inbound-stream true))
+           (finally (.close server)))))
+
+(defn -main
+   "I don't do a whole lot ... yet."
+   [& args]
+   (println "Working")
+   (connect "google.com" 80))
+   ;;(listen 1234))
+
