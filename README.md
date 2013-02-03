@@ -3,6 +3,8 @@ netcat
 
 Clojure implementation of NetCat
 
+Inspired by Mr. Rafal Rusin Blog, NetCat in Java: http://rrusin.blogspot.com/2012/05/netcat-in-java.html.
+
 ## Installation
 
 Download from https://github.com/dboolbe/netcat/archive/master.zip.
